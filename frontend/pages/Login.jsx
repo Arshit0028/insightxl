@@ -1,38 +1,38 @@
-import { useState } from 'react';
+import React from 'react'
+import logo from '../src/assets/logo.svg'
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Handle login logic here
-  };
-
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-center">Login to InsightXL</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-4 border rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-4 border rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
-          Login
-        </button>
-      </form>
-    </div>
-  );
-}
-
-export default Login;
+    <div className="login-card">
+    <img src={logo} alt="Logo" className="logo" />
+    <h2 className="heading">Sign in to your account</h2>
+  
+    <form className="space-y-5">
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email address
+        </label>
+        <input id="email" name="email" type="email" required className="input" />
+      </div>
+  
+      <div>
+        <div className="flex items-center justify-between">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            Password
+          </label>
+          <a href="#" className="link">Forgot password?</a>
+        </div>
+        <input id="password" name="password" type="password" required className="input" />
+      </div>
+  
+      <button type="submit" className="btn">Sign in</button>
+    </form>
+  
+    <p className="footer-text">
+      Don't have an account? <a href="#" className="link">Register here</a>
+    </p>
+  </div>
+  
+    )
+  }
+export default Login

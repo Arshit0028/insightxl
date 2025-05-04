@@ -1,27 +1,43 @@
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Custom base styles */
+/* Full screen center alignment */
 body {
-  @apply bg-gray-50 text-gray-800 font-sans;
+  @apply min-h-screen bg-white flex items-center justify-center text-gray-800 font-sans;
 }
 
-/* Optional: Utility classes or component styles */
-.btn {
-  @apply px-4 py-2 rounded font-medium transition duration-200;
+/* Card container */
+.login-card {
+  @apply w-full max-w-sm mx-auto p-8 border border-gray-200 rounded-xl shadow-sm;
 }
 
-.btn-blue {
-  @apply bg-blue-600 text-white hover:bg-blue-700;
+/* Heading */
+.heading {
+  @apply text-center text-2xl font-bold text-gray-900 mb-6;
 }
 
-.btn-green {
-  @apply bg-green-600 text-white hover:bg-green-700;
+/* Logo */
+.logo {
+  @apply mx-auto mb-4 h-10 w-auto;
 }
 
+/* Input fields */
 .input {
-  @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-300;
+  @apply w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500;
+}
+
+/* Buttons */
+.btn {
+  @apply w-full rounded-md bg-violet-600 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600;
+}
+
+/* Links */
+.link {
+  @apply text-sm font-medium text-violet-600 hover:text-violet-500;
+}
+
+/* Footer text */
+.footer-text {
+  @apply text-center text-sm text-gray-500 mt-6;
 }
