@@ -1,48 +1,108 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
-function Register() {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+const Register = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    password: ''
+  });
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleRegister = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle register logic here
+
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Registration failed');
+
+      alert('✅ Registered successfully!');
+      // Optional: Redirect or reset form
+    } catch (err) {
+      alert(`❌ ${err.message}`);
+    }
+useEffect(() => {
+  const user = localStorage.getItem('user');
+  if (user) navigate('/dashboard');
+}, []);
+
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form onSubmit={handleRegister} className="bg-white p-8 rounded shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-4 text-center">Create an Account</h2>
-        <input
-          name="name"
-          placeholder="Name"
-          className="w-full p-2 mb-4 border rounded"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          className="w-full p-2 mb-4 border rounded"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-4 border rounded"
-          value={form.password}
-          onChange={handleChange}
-        />
-        <button className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700">
+    <div className="login-card">
+      <h2 className="heading">Create Account</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+            Full Name
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            className="input"
+            placeholder="John Doe"
+            value={formData.fullName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="input"
+            placeholder="you@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="input"
+            placeholder="••••••••"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn">
           Register
         </button>
       </form>
+
+      <p className="footer-text">
+        Already have an account?{' '}
+        <Link to="/Login" className="link">Login here</Link>
+      </p>
     </div>
   );
-}
+};
 
 export default Register;
