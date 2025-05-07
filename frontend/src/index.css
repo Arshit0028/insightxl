@@ -2,42 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Full screen center alignment */
-body {
-  @apply min-h-screen bg-white flex items-center justify-center text-gray-800 font-sans;
+/* ==== Global Styles ==== */
+html, body {
+  @apply min-h-screen bg-gradient-to-br from-white to-violet-50 text-gray-900 font-sans antialiased;
 }
 
-/* Card container */
-.login-card {
-  @apply w-full max-w-sm mx-auto p-8 border border-gray-200 rounded-xl shadow-sm;
+/* ==== Utility Classes for Centered Content ==== */
+.center-page {
+  @apply flex min-h-screen items-center justify-center px-4;
 }
 
-/* Heading */
+/* ==== Card Styling ==== */
+.card {
+  @apply w-full max-w-md p-8 bg-white rounded-xl shadow-lg border border-gray-200;
+}
+
+/* ==== Typography ==== */
 .heading {
-  @apply text-center text-2xl font-bold text-gray-900 mb-6;
-}
-x
-/* Logo */
-.logo {
-  @apply mx-auto mb-4 h-10 w-auto;
+  @apply text-2xl font-bold text-gray-800 text-center mb-6;
 }
 
-/* Input fields */
+.subtext {
+  @apply text-sm text-gray-600 text-center;
+}
+
+/* ==== Form Inputs ==== */
 .input {
-  @apply w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500;
+  @apply w-full mt-1 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-violet-500 focus:outline-none text-sm;
 }
 
-/* Buttons */
+/* ==== Buttons ==== */
 .btn {
-  @apply w-full rounded-md bg-violet-600 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600;
+  @apply w-full mt-4 bg-violet-600 text-white py-2 rounded-md font-semibold hover:bg-violet-700 transition;
 }
 
-/* Links */
+/* ==== Links ==== */
 .link {
-  @apply text-sm font-medium text-violet-600 hover:text-violet-500;
-}
-
-/* Footer text */
-.footer-text {
-  @apply text-center text-sm text-gray-500 mt-6;
+  @apply text-violet-600 hover:text-violet-500 font-medium text-sm;
 }
