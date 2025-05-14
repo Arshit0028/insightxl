@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
 
     // Validate password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+    if (!isMatch) return res.status(400).json({ message: 'Invalid password' });
 
     // Generate JWT token
     const payload = {
