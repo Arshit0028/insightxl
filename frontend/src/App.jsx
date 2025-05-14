@@ -9,7 +9,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />

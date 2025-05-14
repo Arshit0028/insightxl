@@ -32,15 +32,6 @@ app.post('/api/excel-upload', upload.single('excel'), (req, res) => {
     res.status(500).json({ message: 'Error parsing file' });
   }
 });
-const express = require('express');
-const settingsRoutes = require('./backend/routes/settingsRoutes');
-
-app.use(express.json());
-
-// Other routes...
-app.use('/api/settings', settingsRoutes);
-
-
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
